@@ -28,21 +28,33 @@ const getWoWImage = function (iconCode) {
   return `https://wow.zamimg.com/images/wow/icons/large/${iconCode}.jpg`;
 };
 
+const setCurrentBlurValue = function (blurValue) {
+  currentBlur = blurValue;
+  spellIcon.style.filter = `blur(${currentBlur}px)`;
+};
+
+const setcurrentTimerValue = function (currentTime) {
+  timeInSeconds = currentTime;
+  timer.textContent = `0:0${timeInSeconds}`;
+};
+
+const resetImageAndTimer = function () {
+  spellIcon.src = getWoWImage(
+    iconCodes[Math.trunc(Math.random() * iconCodes.length)]
+  );
+  setCurrentBlurValue(1);
+  setcurrentTimerValue(timeLimit);
+};
+
 spellIcon.src = getWoWImage(iconCodes[0]);
 
+//each second the interval is called and adjusts the timer and image blur based on the time. called every second and resets when the timer hits 0 choosing a new image
 const chooseNewIcon = setInterval(function () {
   if (timeInSeconds <= 0) {
-    //clearInterval(chooseNewIcon); //only do this if we reset the session
-    spellIcon.src = getWoWImage(
-      iconCodes[Math.trunc(Math.random() * iconCodes.length)]
-    );
-    currentBlur = blurMax;
-    timeInSeconds = timeLimit;
+    resetImageAndTimer();
   }
-  timeInSeconds -= 1;
-  timer.textContent = `0:0${timeInSeconds}`;
-  currentBlur -= blurMax / (timeInSeconds * blurDelta);
-  spellIcon.style.filter = `blur(${currentBlur}px)`;
+  setcurrentTimerValue(timeInSeconds - 1);
+  setCurrentBlurValue(currentBlur - blurMax / (timeInSeconds * blurDelta));
 }, 1000);
 
 //Commenting game logic here to make into problem breakdown
@@ -60,6 +72,10 @@ const chooseNewIcon = setInterval(function () {
 //if not timer expires no score given
 //in both cases new image is generated size & bluriness reset
 //ensure image can't be chosen twice/repeat indexes
+
+//remember to add button click events the nomenclature is
+// btnVariabel.addEventListener('clicl', function() {});
+// The function can be a literal or be an expression as well as inline
 
 //need to know how to do an animated timer bar or basic countdown
 //spell names etc. found here https://docs.google.com/spreadsheets/d/1qBMJrm5sK-VjUSZ0tqXp_LS8OXgWGUJLoPeFcDPTgLs/edit#gid=827207887 for now
