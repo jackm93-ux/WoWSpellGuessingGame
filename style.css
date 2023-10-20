@@ -1,0 +1,43 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  color: #333;
+  line-height: 1.5;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  background: linear-gradient(to top left, #28b487, #7dd56f);
+}
+
+h1 {
+  font-family: sans-serif;
+  color: white;
+  font-size: 50px;
+  transform: translateY(50%);
+}
+
+.hidden {
+  display: none;
+}
+/* Could be interesting to have both blur and height
+  be the variables to difficulty*/
+#spellIcon {
+  pointer-events: none;
+  position: absolute;
+  filter: blur(15px);
+  top: 16.5rem;
+  height: 25rem;
+  box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.2);
+}
