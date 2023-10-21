@@ -10,18 +10,20 @@
   <body>
     <h1 class="timer">0:10</h1>
 
-    <h1 class="score score--currentScore">Score: 150</h1>
+    <div class="scoreDisplay">
+      <h1 class="score score--currentScore">Score: 0</h1>
 
-    <h1 class="score score--currentCombo">Combo</h1>
+      <h1 class="score score--currentCombo">Combo: 1</h1>
+    </div>
 
     <img src="dice-1.png" id="spellIcon" />
 
     <main>
-      <div>
+      <div class="answers">
         <button class="btn btn--answer" id="answer--0">0</button>
         <button class="btn btn--answer" id="answer--1">1</button>
       </div>
-      <div>
+      <div class="answers">
         <button class="btn btn--answer" id="answer--2">2</button>
         <button class="btn btn--answer" id="answer--3">3</button>
       </div>

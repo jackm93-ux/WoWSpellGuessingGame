@@ -25,23 +25,20 @@ h1 {
   font-family: sans-serif;
   color: white;
   font-size: 50px;
-  transform: translateY(50%);
+}
+
+.scoreDisplay {
+  position: absolute;
+  transform: translateX(125%);
+  top: 2rem;
 }
 
 .score {
-  position: absolute;
+  text-align: left;
+  min-width: 400px;
   pointer-events: none;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
     'Lucida Sans', Arial, sans-serif;
-}
-
-.score--currentScore {
-  transform: translateX(115%);
-}
-
-.score--currentCombo {
-  transform: translateX(200%);
-  top: 5rem;
 }
 
 .hidden {
@@ -60,6 +57,7 @@ h1 {
 
 .timer {
   position: absolute;
+  transform: translateY(50%);
 }
 
 .btn {
@@ -83,7 +81,7 @@ h1 {
   box-shadow: 0 1.75rem 3.5rem rgba(0, 0, 0, 0.1);
 }
 
-div {
+.answers {
   transform: translateY(50rem);
   padding: 20px;
 }
@@ -91,7 +89,7 @@ div {
 .btn--answer {
   position: inherit;
   margin-right: 20px;
-  min-width: 250px;
+  min-width: 275px;
   width: max-content;
 }
 

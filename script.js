@@ -12,6 +12,7 @@ let timeInSeconds = 10;
 let timeLimit = 10;
 
 let currentScore = 0;
+let minCombo = 1;
 let currentCombo = 1;
 
 const scorePerCorrectAnswer = 10;
@@ -112,12 +113,19 @@ const calculateScore = function () {
   return Math.trunc(scorePerCorrectAnswer * currentBlur * currentCombo);
 };
 
+const setScoreText = function (score) {
+  currentScoreText.textContent = `Score: ${score}`;
+};
+
+const setCurrentCombo = function (combo) {
+  currentCombo = combo;
+  currentComboText.textContent = `Combo:    ${currentCombo}`;
+};
+
 const updateScore = function (scoringFunction) {
   currentScore += scoringFunction();
-  currentCombo++;
-
-  currentScoreText.textContent = `Score: ${currentScore}`;
-  currentComboText.textContent = `Combo: ${currentCombo}`;
+  setCurrentCombo(currentCombo + 1);
+  setScoreText(currentScore);
 };
 
 const setUpAnswerButtons = function () {
@@ -167,8 +175,7 @@ const resetImageAndTimer = function () {
 const chooseNewIcon = setInterval(function () {
   if (timeInSeconds <= 0) {
     resetImageAndTimer();
-    currentCombo = 1;
-    currentComboText.textContent = currentCombo;
+    setCurrentCombo(minCombo);
   }
   setcurrentTimerValue(timeInSeconds - 1);
   setCurrentBlurValue(currentBlur - blurMax / (timeInSeconds * blurDelta));
